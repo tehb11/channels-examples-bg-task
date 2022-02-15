@@ -14,7 +14,7 @@ concepts relevant to Channels.
 
 ### Step 1: Get dependencies in place
 
-Set up a virtual environment with Python 3.6, setuptools, pip, and wheel. Then install Django and
+Set up a virtual environment with Python 3.9, setuptools, pip, and wheel. Then install Django and
 Channels:
 
 ```shell
@@ -24,7 +24,7 @@ $> touch .envrc && echo "layout python3" > .envrc && direnv allow  # I'm using d
 
 $> pip install django channels channels_redis
 ```
-*This was written with Django==2.0.3 and Channels==2.0.2.*
+*This was written with Django==4.0.2 and Channels==3.0.4
 
 You will also need a running redis server. Here is how that can be accomplished with Homebrew on
 OSX:
@@ -94,7 +94,7 @@ from tasks.consumers import BackgroundTaskConsumer
 
 application = ProtocolTypeRouter({
     'channel': ChannelNameRouter({
-        'background-tasks': BackgroundTaskConsumer,
+        'background-tasks': BackgroundTaskConsumer.as_asgi(),
     })
 })
 ```
