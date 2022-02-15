@@ -9,6 +9,6 @@ application = ProtocolTypeRouter({
     # Messages directed to a single channel will have a type `channel`
     'channel': ChannelNameRouter({
         # Messages directed to the `background-tasks` channel will be passed to our consumer
-        'background-tasks': BackgroundTaskConsumer,
+        'background-tasks': BackgroundTaskConsumer.as_asgi(),
     })
 })
